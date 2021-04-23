@@ -1,46 +1,50 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void sortTable(int table[], int tableSize);
+int stringCmp(const char *string1, const char *string2);
 
 int main(int argc, char *argv[]) {
 
-    int i = 0;
-    int table[11] = {153, 15, 262, 81, 4, 6, 1, 0, -8, 1000, 3};
-    sortTable(table, 11);
+    char string1[] = "Hello", string2[] = "Hello";
 
-    for(i = 0; i < 11; i++)
-    {
-        printf("%d \n", table[i]);
+    if(stringCmp(string1, string2) == 0) {
+        printf("the Strings are equal");
+    }else {
+        printf("the Strings are not equal");
     }
-    return 0;
 
+    return 0;
 }
 
-void sortTable(int table[], int tableSize)
-{
-    int i = 0, j = 0, min = 0,value;
+int stringCmp(const char *string1, const char *string2) {
 
-    for(i=0; i < tableSize; i++)
+
+    int length1 = strlen(string1);
+    int length2 = strlen(string2);
+
+    int i = 0, j = 0;
+    if(length1 != length2)
     {
-        min = table[i];
+        j = 1;
 
-        for(j = i; j < tableSize; j++){
-            if(min > table[j]){
-                value = table[i];
-                min = table[j];
-                table[i] = min;
-                table[j] = value;
+    }else {
+
+        int char1 = 0, char2 = 0, conter = 0;
+
+        for(i = 0; i < strlen(string1); i++){
+            char1 = string1[i];
+            char2 = string2[i];
+            if(char1 != char2){
+                conter++;
             }
+        }
+        if(conter == 0){
+            j = 0;
+        }else {
+            j = 1;
         }
     }
 
-    printf("Hello From sortTable \n");
+    return j;
 }
-
-
-
-
-
-
-
