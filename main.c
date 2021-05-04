@@ -1,50 +1,49 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include<stdio.h>
+#include<string.h>
+#include"main.h"
+#define MAX 2
+#define SUBJECTS 2
 
-int stringCmp(const char *string1, const char *string2);
 
-int main(int argc, char *argv[]) {
+int main()
+{
 
-    char string1[] = "Hello", string2[] = "Hello";
+    Students Student[MAX];
+    int i, j;
+    float sum;
 
-    if(stringCmp(string1, string2) == 0) {
-        printf("the Strings are equal");
-    }else {
-        printf("the Strings are not equal");
+    for(i = 0; i < MAX; i++){
+
+        printf("Enter details of student %d \n\n", (i + 1));
+
+        printf("Enter name: ");
+        scanf("%s", Student[i].name);
+        printf("Enter roll no: ");
+        scanf("%d", &Student[i].roll);
+
+        for(j = 0; j < SUBJECTS; j++){
+
+            printf("Enter marks: ");
+            scanf("%f", &Student[i].mark[j]);
+
+        }
+
+        printf("\n");
+    }
+
+    printf("Name\tRoll\tAverage\t \n\n");
+
+    for(i = 0; i < MAX; i++) {
+
+        sum = 0;
+        for(j = 0; j < SUBJECTS; j++) {
+
+            sum += Student[i].mark[j];
+
+        }
+
+        printf("%s\t%d\t%.2f\n",Student[i].name, Student[i].roll, (sum / SUBJECTS) );
     }
 
     return 0;
-}
-
-int stringCmp(const char *string1, const char *string2) {
-
-
-    int length1 = strlen(string1);
-    int length2 = strlen(string2);
-
-    int i = 0, j = 0;
-    if(length1 != length2)
-    {
-        j = 1;
-
-    }else {
-
-        int char1 = 0, char2 = 0, conter = 0;
-
-        for(i = 0; i < strlen(string1); i++){
-            char1 = string1[i];
-            char2 = string2[i];
-            if(char1 != char2){
-                conter++;
-            }
-        }
-        if(conter == 0){
-            j = 0;
-        }else {
-            j = 1;
-        }
-    }
-
-    return j;
 }
