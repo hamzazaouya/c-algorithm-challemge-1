@@ -1,49 +1,41 @@
-#include<stdio.h>
-#include<string.h>
-#include"main.h"
-#define MAX 2
-#define SUBJECTS 2
-
+#include <stdio.h>
+#include <stdlib.h>
+#define NEW_LINE() printf("\n");
 
 int main()
 {
+    float num1 = 0, num2 = 0;
+    char op;
+    int cont = 1;
 
-    Students Student[MAX];
-    int i, j;
-    float sum;
+    while (cont != 0){
 
-    for(i = 0; i < MAX; i++){
+        printf("Enter First Number: ");
+        scanf("%f", &num1);
+        printf("Enter Secound Number: ");
+        scanf("%f", &num2);
+        printf("Enter Operator: ");
+        scanf(" %c", &op);
 
-        printf("Enter details of student %d \n\n", (i + 1));
+        printf("\n");
 
-        printf("Enter name: ");
-        scanf("%s", Student[i].name);
-        printf("Enter roll no: ");
-        scanf("%d", &Student[i].roll);
+        switch(op) {
 
-        for(j = 0; j < SUBJECTS; j++){
-
-            printf("Enter marks: ");
-            scanf("%f", &Student[i].mark[j]);
-
+            case '+': printf("%.1f + %.1f = %.1f\n", num1, num2, (num1+num2)); break;
+            case '-': printf("%.1f - %.1f = %.1f\n", num1, num2, (num1-num2)); break;
+            case '*': printf("%.1f * %.1f = %.1f\n", num1, num2, (num1*num2)); break;
+            case '/': printf("%.1f / %.1f = %.1f\n", num1, num2, (num1/num2)); break;
+            default: printf("Please enter + - / * \n");
         }
 
         printf("\n");
+
+        printf("if you Want to Exite Enter Number 0 ");
+        scanf("%d", &cont);
+
     }
 
-    printf("Name\tRoll\tAverage\t \n\n");
-
-    for(i = 0; i < MAX; i++) {
-
-        sum = 0;
-        for(j = 0; j < SUBJECTS; j++) {
-
-            sum += Student[i].mark[j];
-
-        }
-
-        printf("%s\t%d\t%.2f\n",Student[i].name, Student[i].roll, (sum / SUBJECTS) );
-    }
+    printf("Thanks For Using Our Calualtor");
 
     return 0;
 }
