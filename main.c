@@ -1,41 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define NEW_LINE() printf("\n");
+#include <time.h>
+
 
 int main()
 {
-    float num1 = 0, num2 = 0;
-    char op;
-    int cont = 1;
+    int i = 0, j = 0, n = 30;
 
-    while (cont != 0){
+    for(i = 0; i < n; i++){
 
-        printf("Enter First Number: ");
-        scanf("%f", &num1);
-        printf("Enter Secound Number: ");
-        scanf("%f", &num2);
-        printf("Enter Operator: ");
-        scanf(" %c", &op);
-
+        if(i != (n -1)){
+            for(j = n - 2; j > i; j--){
+            printf(" ");
+        }
+        for(j = 0; j <= (2*i+1); j++){
+            if(j == 0){
+                printf("/");
+            }else if(j == (2*i+1)){
+                printf("\\");
+            }else{
+                printf(" ");
+            }
+        }
         printf("\n");
-
-        switch(op) {
-
-            case '+': printf("%.1f + %.1f = %.1f\n", num1, num2, (num1+num2)); break;
-            case '-': printf("%.1f - %.1f = %.1f\n", num1, num2, (num1-num2)); break;
-            case '*': printf("%.1f * %.1f = %.1f\n", num1, num2, (num1*num2)); break;
-            case '/': printf("%.1f / %.1f = %.1f\n", num1, num2, (num1/num2)); break;
-            default: printf("Please enter + - / * \n");
+        }else {
+            for(j = 0; j < 2*i; j++){
+                printf("*");
+            }
         }
 
-        printf("\n");
-
-        printf("if you Want to Exite Enter Number 0 ");
-        scanf("%d", &cont);
-
     }
-
-    printf("Thanks For Using Our Calualtor");
-
     return 0;
+
 }
